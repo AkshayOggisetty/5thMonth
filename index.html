@@ -23,8 +23,7 @@ justify-content:center;
 align-items:center;
 }
 
-/* ---------- LOCK SCREEN ---------- */
-
+/* LOCK SCREEN */
 .lock-screen{
 position:absolute;
 inset:0;
@@ -36,13 +35,17 @@ flex-direction:column;
 z-index:10;
 }
 
+.lock-screen h2{
+margin-bottom:15px;
+}
+
 .lock-screen input{
 padding:12px 20px;
 border-radius:30px;
 border:none;
-margin-top:15px;
 font-size:16px;
 text-align:center;
+outline:none;
 }
 
 .lock-screen button{
@@ -53,10 +56,14 @@ border-radius:30px;
 background:#ff4b7d;
 color:white;
 cursor:pointer;
+transition:.3s;
 }
 
-/* ---------- MAIN CARD ---------- */
+.lock-screen button:hover{
+transform:scale(1.05);
+}
 
+/* MAIN CARD */
 .container{
 display:none;
 width:90%;
@@ -76,13 +83,18 @@ to{opacity:1;transform:translateY(0);}
 }
 
 .photo{
-width:120px;
-height:120px;
+width:130px;
+height:130px;
 border-radius:50%;
 margin:0 auto 20px;
 overflow:hidden;
-box-shadow:0 0 30px rgba(255,0,150,0.8);
-border:3px solid rgba(255,255,255,0.6);
+box-shadow:0 0 35px rgba(255,0,150,0.9);
+border:3px solid rgba(255,255,255,0.7);
+transition:.4s;
+}
+
+.photo:hover{
+transform:scale(1.05);
 }
 
 .photo img{
@@ -125,8 +137,7 @@ font-size:13px;
 opacity:.7;
 }
 
-/* ---------- MOON ---------- */
-
+/* MOON */
 .moon{
 position:absolute;
 top:10%;
@@ -136,7 +147,7 @@ height:120px;
 background:radial-gradient(circle,#ffffff 40%,#ddd 60%);
 border-radius:50%;
 box-shadow:0 0 60px white;
-animation:moonMove 60s linear infinite;
+animation:moonMove 70s linear infinite;
 }
 
 @keyframes moonMove{
@@ -144,8 +155,7 @@ from{right:-150px;}
 to{right:110%;}
 }
 
-/* ---------- STARS ---------- */
-
+/* STARS */
 .star{
 position:absolute;
 width:2px;
@@ -160,16 +170,14 @@ from{opacity:0.2;}
 to{opacity:1;}
 }
 
-/* ---------- SECRET MESSAGE ---------- */
-
+/* SECRET MESSAGE */
 .secret{
 display:none;
 margin-top:20px;
 font-size:16px;
 color:#ffb6d9;
-animation:fadeIn 2s ease forwards;
+animation:fadeIn 1.5s ease forwards;
 }
-
 </style>
 </head>
 
@@ -177,8 +185,8 @@ animation:fadeIn 2s ease forwards;
 
 <!-- LOCK SCREEN -->
 <div class="lock-screen" id="lockScreen">
-<h2>Enter Our Special Word 💖</h2>
-<input type="password" id="passwordInput" placeholder="Password">
+<h2>Enter Our Code 💖</h2>
+<input type="password" id="passwordInput" placeholder="Enter code">
 <button onclick="unlock()">Unlock 🌙</button>
 </div>
 
@@ -189,7 +197,7 @@ animation:fadeIn 2s ease forwards;
 <div class="container" id="mainContent">
 
 <div class="photo">
-<img src="photo.jpg" alt="Her Photo">
+<img src="photo.jpeg" alt="Her Photo">
 </div>
 
 <h1>A Reason Why I Love You 🌙</h1>
@@ -206,7 +214,7 @@ Reasons discovered: 0
 
 <div class="secret" id="secretMessage">
 You are not just someone I love…  
-You are the best thing that has ever happened to me. 💖🌙
+You are the best thing that has ever happened to me. 🌙💖
 </div>
 
 </div>
@@ -218,20 +226,21 @@ You are the best thing that has ever happened to me. 💖🌙
 
 <script>
 
-/* --------- PASSWORD --------- */
+/* PASSWORD */
 function unlock(){
 const pass=document.getElementById("passwordInput").value;
-if(pass==="moonlight"){   // change password here
+
+if(pass==="2409"){   // PASSWORD SET HERE
 document.getElementById("lockScreen").style.display="none";
 document.getElementById("mainContent").style.display="block";
 document.getElementById("bgMusic").play();
 }
 else{
-alert("Wrong password 💔");
+alert("Wrong code 💔");
 }
 }
 
-/* --------- STARS --------- */
+/* STARS */
 for(let i=0;i<100;i++){
 let star=document.createElement("div");
 star.classList.add("star");
@@ -241,18 +250,106 @@ star.style.animationDuration=(Math.random()*3+1)+"s";
 document.body.appendChild(star);
 }
 
-/* --------- COMPLIMENTS --------- */
+/* COMPLIMENTS */
 const compliments=[
-"You are my calm in every storm.",
-"You make my nights peaceful.",
-"You glow brighter than the moon.",
-"You are my forever favorite.",
+"You are the most beautiful part of my life.",
+"You make my heart feel understood.",
+"You have a smile that fixes everything.",
+"You make love feel simple and pure.",
+"You are my favorite part of every day.",
+"You light up rooms without even trying.",
+"You make my world feel safe.",
+"You have the gentlest heart.",
+"You make my life feel intentional.",
+"You are my peace in human form.",
+"You make happiness look effortless.",
+"You have the most comforting presence.",
+"You make me believe in forever.",
+"You are my warmest thought.",
+"You make even silence feel special.",
+"You are my soft place to land.",
+"You make my heart choose you daily.",
+"You are my sweetest reality.",
+"You make life feel beautifully balanced.",
+"You have a soul that feels like home.",
+"You make ordinary things feel magical.",
+"You are the reason I smile randomly.",
+"You make love feel patient and kind.",
+"You are my favorite feeling.",
+"You make my heart rest easy.",
+"You have the purest smile.",
+"You make my days feel complete.",
+"You are my constant reassurance.",
+"You make love feel calm.",
+"You are my daily comfort.",
+"You make the future exciting.",
+"You have the brightest energy.",
+"You make everything feel lighter.",
+"You are my emotional anchor.",
+"You make me feel deeply understood.",
+"You have the kindest intentions.",
+"You make my heart glow.",
+"You are my sweetest adventure.",
 "You make my world softer.",
-"You are my sweetest dream.",
-"You make even silence romantic.",
-"You are my safe place.",
+"You are effortlessly lovable.",
+"You make my life more meaningful.",
+"You have the most peaceful vibe.",
+"You make my worries shrink.",
+"You are my favorite hello and hardest goodbye.",
+"You make love feel secure.",
+"You are my best blessing.",
+"You make my heart steady.",
+"You have the warmest hugs.",
+"You make my world make sense.",
+"You are my favorite coincidence.",
+"You make my heart skip in the best way.",
+"You have the most beautiful aura.",
+"You make everything feel aligned.",
+"You are my gentle strength.",
+"You make love feel timeless.",
+"You are my calm happiness.",
+"You make my life feel full.",
+"You have the sweetest laugh.",
+"You make every memory brighter.",
+"You are my heart’s safe choice.",
+"You make even bad days softer.",
+"You have a glow that never fades.",
 "You make my heart feel chosen.",
-"You are my favorite person in this universe."
+"You are my most precious thought.",
+"You make my world more colorful.",
+"You have the most beautiful spirit.",
+"You make my life richer emotionally.",
+"You are my favorite comfort.",
+"You make my soul feel settled.",
+"You have the most sincere eyes.",
+"You make my happiness grow.",
+"You are my constant joy.",
+"You make love feel secure and warm.",
+"You are my sweetest inspiration.",
+"You make everything feel okay.",
+"You have the most beautiful mind.",
+"You make my heart grateful.",
+"You are my safe happiness.",
+"You make my world brighter daily.",
+"You have the softest presence.",
+"You make my heart feel valued.",
+"You are my forever calm.",
+"You make love feel stable.",
+"You are my little miracle.",
+"You make my life more vibrant.",
+"You have the most genuine smile.",
+"You make my heart feel at home.",
+"You are my daily sunshine.",
+"You make every second better.",
+"You have the purest laugh.",
+"You make my life beautifully unpredictable.",
+"You are my favorite chapter.",
+"You make my heart feel lucky.",
+"You have the most loving energy.",
+"You make my world infinitely better.",
+"You are my most beautiful habit.",
+"You make love feel deep.",
+"You are my constant happiness."
 ];
 
 let unused=[...compliments];
@@ -279,8 +376,14 @@ div.style.transform="translateY(0)";
 count++;
 document.getElementById("counter").innerText="Reasons discovered: "+count;
 
-if(count===25){
-document.getElementById("secretMessage").style.display="block";
+/* SECRET EVERY 5 CLICKS */
+if(count % 5 === 0){
+const secret=document.getElementById("secretMessage");
+secret.style.display="block";
+
+setTimeout(()=>{
+secret.style.display="none";
+},4000);
 }
 }
 
