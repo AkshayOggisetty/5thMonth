@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+    }
+
+    .container {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        width: 90%;
+        max-width: 550px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: #ff4b7d;
+    }
+
+    #compliment {
+        font-size: 20px;
+        min-height: 70px;
+        margin-bottom: 25px;
+        transition: opacity 0.4s ease;
+        line-height: 1.5;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 25px;
+        background-color: #ff4b7d;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+        transform: scale(1.07);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .counter {
+        margin-top: 15px;
+        font-size: 14px;
+        color: gray;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Click for a Reason ❤️</h1>
+    <div id="compliment">Press the button to see why I love you 💕</div>
+    <button onclick="generateCompliment()">Show Me 💌</button>
+    <div class="counter" id="counter">Compliments shown: 0</div>
+</div>
+
+<script>
+
+const compliments = [
+"I love the way you smile.",
+"You make ordinary days feel magical.",
+"Your laugh is my favorite sound.",
+"You are incredibly kind.",
+"You inspire me to be better.",
+"You have the most beautiful heart.",
+"You make me feel safe.",
+"Your eyes light up my world.",
+"You understand me like no one else.",
+"You are my favorite person.",
+"You make my life brighter.",
+"You are stronger than you realize.",
+"You make everything better.",
+"You are my peace.",
+"You are effortlessly beautiful.",
+"You care deeply about people.",
+"You make me proud.",
+"You are my best friend.",
+"You make love feel easy.",
+"You are my happiest thought.",
+
+"You make my world feel softer.",
+"You are the calm in my chaos.",
+"You have the most comforting presence.",
+"You turn simple moments into beautiful memories.",
+"You make my heart feel full.",
+"You are effortlessly graceful.",
+"You make love feel natural.",
+"You make every place feel like home.",
+"You are my favorite notification.",
+"You glow in ways you don’t even realize.",
+"You make me feel understood.",
+"You are beautifully unique.",
+"You make life feel lighter.",
+"You are stronger than any storm.",
+"You make my worries fade away.",
+"You have the warmest soul.",
+"You make my days brighter just by existing.",
+"You are my favorite hello.",
+"You make good days better and bad days bearable.",
+"You have the most genuine heart.",
+"You are pure magic in human form.",
+"You make everything feel possible.",
+"You have the sweetest smile.",
+"You are my constant comfort.",
+"You make love feel safe.",
+"You inspire me without even trying.",
+"You are my favorite thought before sleep.",
+"You make me laugh when I need it most.",
+"You are my sunshine on cloudy days.",
+"You make ordinary conversations unforgettable.",
+"You are beautifully irreplaceable.",
+"You make every memory special.",
+"You have the kindest eyes.",
+"You make my heart race in the best way.",
+"You are my daily happiness.",
+"You make silence feel peaceful.",
+"You are effortlessly amazing.",
+"You make every hug feel like therapy.",
+"You are my safe space.",
+"You make me proud to love you.",
+"You have the most beautiful energy.",
+"You make everything feel meaningful.",
+"You are my favorite chapter in life.",
+"You make the future exciting.",
+"You are stronger than you think.",
+"You make even boring days fun.",
+"You have a heart of gold.",
+"You make me want to be better every day.",
+"You are my sweetest addiction.",
+"You make love feel magical.",
+"You are my calm after a long day.",
+"You make my world colorful.",
+"You have the softest heart.",
+"You make my life feel complete.",
+"You are beautifully imperfect in the best way.",
+"You make every day worth it.",
+"You are my favorite distraction.",
+"You make me smile without trying.",
+"You have the most comforting voice.",
+"You make my heart choose you every time.",
+"You are my best decision.",
+"You make my life feel aligned.",
+"You have a glow that lights up rooms.",
+"You make love feel effortless.",
+"You are my favorite memory in the making.",
+"You make me feel chosen.",
+"You have the most beautiful mind.",
+"You make every second sweeter.",
+"You are my forever favorite.",
+"You make my heart feel safe.",
+"You have a laugh I could listen to forever.",
+"You make everything feel okay.",
+"You are my little piece of heaven.",
+"You make love feel exciting.",
+"You have the purest intentions.",
+"You make my mornings better.",
+"You are my favorite place to be.",
+"You make my heart smile.",
+"You have the softest smile.",
+"You make love feel patient.",
+"You are my peaceful thought.",
+"You make everything brighter.",
+"You have the most genuine laugh.",
+"You make my heart melt.",
+"You are my daily reminder of happiness.",
+"You make me feel lucky every day.",
+"You have the most beautiful spirit.",
+"You make even silence special.",
+"You are my comfort and my thrill.",
+"You make my life richer.",
+"You have a soul that shines.",
+"You make love feel endless.",
+"You are my favorite blessing.",
+"You make my heart grateful.",
+"You have the sweetest presence.",
+"You make every day feel like a gift.",
+"You are my most beautiful reality.",
+"You make my world better just by being in it."
+];
+
+let unused = [...compliments];
+let count = 0;
+
+function generateCompliment() {
+    if (unused.length === 0) {
+        unused = [...compliments];
+    }
+
+    const randomIndex = Math.floor(Math.random() * unused.length);
+    const message = unused[randomIndex];
+    unused.splice(randomIndex, 1);
+
+    const complimentDiv = document.getElementById("compliment");
+    complimentDiv.style.opacity = 0;
+
+    setTimeout(() => {
+        complimentDiv.innerText = message;
+        complimentDiv.style.opacity = 1;
+    }, 200);
+
+    count++;
+    document.getElementById("counter").innerText = 
+        "Compliments shown: " + count;
+}
+
+</script>
+
+</body>
+</html>
